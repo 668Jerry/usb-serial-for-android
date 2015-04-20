@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Test Android Usb</string>
 
-    <string name="hello_world">Hello world</string>
+    <string name="direction">USB Serial Port Input:</string>
+    <string name="usbInputInfoEmpty">No input now...</string>
     <string name="action_settings">Settings</string>
+
 </resources>
