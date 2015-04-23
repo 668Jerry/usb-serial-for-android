@@ -1,3 +1,9 @@
+package me.leisureart.testandroidusb;
+
+/**
+ * Created by lololol on 22/Apr/15.
+ */
+
 /* Copyright 2011-2013 Google Inc.
  * Copyright 2013 mike wakerly <opensource@hoho.com>
  *
@@ -18,8 +24,6 @@
  *
  * Project home page: https://github.com/mik3y/usb-serial-for-android
  */
-
-package com.hoho.android.usbserial.examples;
 
 import android.app.Activity;
 import android.content.Context;
@@ -69,28 +73,25 @@ public class SerialConsoleActivity extends Activity {
 
     private SerialInputOutputManager mSerialIoManager;
 
-    // This is Listener
     private final SerialInputOutputManager.Listener mListener =
             new SerialInputOutputManager.Listener() {
 
-        @Override
-        public void onRunError(Exception e) {
-            Log.d(TAG, "Runner stopped.");
-        }
-
-        @Override
-        public void onNewData(final byte[] data) {
-            SerialConsoleActivity.this.runOnUiThread(new Runnable() {
                 @Override
-                public void run() {
-//                    Toast.makeText(this,"abc",100).show();
-                    SerialConsoleActivity.this.updateReceivedData(data);
+                public void onRunError(Exception e) {
+                    Log.d(TAG, "Runner stopped.");
                 }
-            });
-        }
-    };
 
-    // Dont't bother onCreate
+                @Override
+                public void onNewData(final byte[] data) {
+                    SerialConsoleActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SerialConsoleActivity.this.updateReceivedData(data);
+                        }
+                    });
+                }
+            };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
